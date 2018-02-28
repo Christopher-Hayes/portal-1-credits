@@ -1,0 +1,100 @@
+/* background defeaults to transparent b/c mystery box radnomly flashes on screen in 
+    random positions, this appears to patch the bug for now */
+* { margin: 0; padding: 0; background-color: rgba( 0, 0, 0, 0 );font-family: 'Cutive Mono', monospace; }
+body {
+    width: calc( 100vw - 53px );
+    height: calc( 100vh - 53px );
+    padding: 25px;
+    background-color: black;
+}
+.lyrics {
+    width: calc( 50% - 48px );
+    height: calc( 100% - 48px );
+    color: rgb(216, 164, 48);
+    font-size: 1.5em;
+    float: left;
+    border: 24px solid transparent;
+    -webkit-border-image: url( img/border.png ) 30% round;
+    -moz-border-image: url( img/border.png ) 30% round;
+    border-image: url( img/border.png ) 33% round;
+}
+.printChar {
+    animation: animAppear;
+    animation-duration: 100ms;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
+}
+@keyframes animAppear {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.cursor {
+    animation: animBlink;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    display: inline-block;
+}
+@keyframes animBlink {
+    0% { opacity: 0; }
+    27% { opacity: 1; }
+    54% { opacity: 1; }
+    81% { opacity: 0; }
+}
+.break {
+    display: block;
+    content: "";
+    height: 30px;
+}
+.credits-wrap {
+    position: absolute;
+    right: 0;
+    width: calc( 50% - 48px );
+    height: calc( 50% - 51px );
+    overflow: hidden;
+    border: 24px solid transparent;
+    -webkit-border-image: url( img/border2.png ) 30% round;
+    -moz-border-image: url( img/border2.png ) 30% round;
+    border-image: url( img/border2.png ) 33% round;
+}
+.credits {
+    position: absolute;
+    display: table-cell;
+    width: calc( 100% - 20px );
+    bottom: 0;
+    right: 0;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: 1.4em;
+    line-height: 30px;
+    color: rgb(216, 164, 48);
+}
+.graphic-wrap {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    bottom: 0;
+    margin-top: 50%;
+    height: 50%;
+    width: 50%;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+}
+.graphic {
+    padding-top: 28px;
+    margin-left: 20%;
+    text-align: left;
+    color: rgb(216, 164, 48);
+    font-size: 1.4em;
+    letter-spacing: -0.3m;
+    line-height: 1em;
+    display: none;
+}
+.thanks {
+    position: absolute;
+    left: 60px;
+    bottom: 60px;
+    color: rgb(216, 164, 48);
+    visibility: hidden;
+}
