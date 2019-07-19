@@ -6,3 +6,5 @@ ASCII art provided by kazitor of kazitor.com
 Live at [https://hayeschris.com/proj/Portal-1-Ending/portal-1-ending.html](https://hayeschris.com/proj/Portal-1-Ending/portal-1-ending.html)
 
 ![Screenshot of live site](https://imgur.com/QmWDODP.jpg)
+
+Huge thanks to kazitor of kazitor.com for making the ASCII art available.
