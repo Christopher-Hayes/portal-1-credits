@@ -55,7 +55,7 @@ function requestPlay() {
 /* LYRICS */
 var lyricsIndex = 0;
 function initLyrics() {
-    start = ( new Date() ).getTime() - 1000;
+    start = ( new Date() ).getTime();
     for( var k in text )
         printLyric( text[ k ][ 0 ], text[ k ][ 2 ], Math.max( 0, text[ k ][ 1 ] ) - 1500, k );
 }
