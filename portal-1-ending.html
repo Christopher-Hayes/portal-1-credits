@@ -8,10 +8,12 @@
 		<script src="main.js"></script>
 	</head>
 	<body onload="onload()">
-        <div class="lyrics" id="lyrics"></div>
-        <div class="credits-wrap"><div class="credits" id="credits"></div></div>
-        <div class="thanks" id="thanks">Huge thanks to kazitor of kazitor.com for making the ASCII art available.</div>
-        <div class="graphic-wrap">
+    <div class="visualizer">
+      <div class="lyrics" id="lyrics"></div>
+      <div class="credits-wrap">
+        <div class="credits" id="credits"></div>
+      </div>
+      <div class="graphic-wrap">
         <div class="graphic"><pre>
             .,-:;//;:=,
          . :H@@@MM@M#H/.,+%;,
@@ -231,7 +233,13 @@ M###################@%=           =+@MH%
       H#M    /@####/      ,++.  / ==-,
                ,=/:, .+X@MMH@#H  #####$=
             </pre></div>
-        </div>
-        <audio id="music" src="still_alive.m4a"></audio>
+      </div>
+    </div>
+    <div class="thanks" id="thanks">Huge thanks to kazitor of kazitor.com for making the ASCII art available.</div>
+    <div id="overlay">
+      <!-- overlay to force user gesture to allow audio to play -->
+      <button onclick="playClick()" id="overlay-button" class="overlay-button">Loading</button>
+    </div>
+    <audio id="music" src="still_alive.m4a"></audio>
 	</body>
 </html>

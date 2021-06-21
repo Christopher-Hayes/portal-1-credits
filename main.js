@@ -1,27 +1,61 @@
 var lyrics, cursor, credits;
 var start;
+
 function onload() {
-    lyrics = document.getElementById( "lyrics" );
-    credits = document.getElementById( "credits" );
-    initCursor();
-    var audio = document.getElementById( "music" );
-    audio.addEventListener( 'canplay', start, false );
-    if (audio.readyState > 3)
-        start();
+  lyrics = document.getElementById( "lyrics" );
+  credits = document.getElementById( "credits" );
+  initCursor();
+
+  // Show play button when audio is ready
+  var audio = document.getElementById( "music" );
+  audio.addEventListener( 'canplaythrough', start, false );
+  checkLoad(audio);
 }
-// start when music is loaded
-function start() {
-    document.getElementById( "music" ).play();
-    start = ( new Date() ).getTime();
+
+function checkLoad(audio) {
+  if (audio.readyState > 3) {
+    // Audio ready to play
+    ready = true;
+    document.getElementById('overlay-button').innerText = 'Play';
+    document.body.classList.add('ready');
+  } else {
+    console.log('Audio not ready, try again..');
+    setTimeout(() => checkLoad(audio), 100);
+  }
+}
+
+function playClick() {
+  console.log('Play clicked');
+  if (ready) {
+    document.body.classList.add('play');
+    requestPlay();
+    ready = false;
+  }
+}
+
+// Request play
+function requestPlay() {
+  const audioElem = document.querySelector('#music');
+  const startAnimation = function() {
+    // Init different parts of animation
     initLyrics();
     initCredits();
     initImages();
-    setTimeout( function() { document.getElementById( "thanks" ).style.visibility = "visible"; }, 175000 );
+    // Display thanks message at end
+    setTimeout( () => {
+      document.querySelector('#thanks').style.visibility = 'visible';
+    }, 175000);
+  };
+  audioElem.onplay = startAnimation;
+  // Request audio to start playing
+  audioElem.play();
 }
+
+
 /* LYRICS */
 var lyricsIndex = 0;
 function initLyrics() {
-    start = ( new Date() ).getTime();
+    start = ( new Date() ).getTime() - 1000;
     for( var k in text )
         printLyric( text[ k ][ 0 ], text[ k ][ 2 ], Math.max( 0, text[ k ][ 1 ] ) - 1500, k );
 }
